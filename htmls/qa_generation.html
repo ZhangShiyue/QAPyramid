@@ -1,0 +1,361 @@
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #DDD;
+  border-top: 1px solid #DDD;
+}
+
+tr:hover {background-color: #D6EEEE;}
+.collapsible {
+  background-color: cadetblue;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.active, .collapsible:hover {
+  background-color: dodgerblue;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.instruction {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+</style>
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<script type="text/javascript">
+function validate() {
+    var paragraph = document.getElementById('summary').textContent;
+    for (var i = 1; i <= 5; i++) {
+        var question = document.getElementById("question" + i).value.trim();
+        var answer = document.getElementById("answer" + i + "1").value.trim();
+        if (question.length === 0 && answer.length !== 0) {
+            alert("Question " + i + " cannot be empty, when Answer " + i + " is not empty!");
+            return false;
+        }
+        if (question.length !== 0 && answer.length === 0) {
+            alert("Answer 1 of Question " + i + " cannot be empty, when Question " + i + " is not empty!");
+            return false;
+        }
+
+        for (var j = 1; j <= 3; j++) {
+            var answer_tmp = document.getElementById("answer" + i + j).value.trim();
+            if (answer_tmp.length !== 0 && !paragraph.includes(answer_tmp)) {
+                alert("Answer " + j + " of Question " + i + " is not a substring of the paragraph!");
+                return false;
+            }
+        }
+
+    }
+    return true;
+}
+
+</script>
+
+<section class="container" id="Sentiment"><!-- Instructions (collapsible) -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary"><!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature --><a class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Instructions</strong><span class="collapse-text">&nbsp;(Please read carefully to ensure that your work gets approved as quickly as possible!)</span></a>
+<div class="panel-body" id="instructionBody">
+<p style="font-size: 14px; text-size-adjust: auto;"><span style="font-weight: 700;">Welcome to our question <span style="color: green">writing</span> task!</span></p>
+
+<p style="font-size: 14px; text-size-adjust: auto;">We need your help in deconstructing the meanings of verbs in an English sentence into lists of questions and answers. 	</p>
+
+    <p style="font-size: 14px; text-size-adjust: auto;">For each assignment, you will be prompted with <span style="font-weight: 700;">a short English sentence</span>
+        with <span style="font-weight: 700; background-color: lightgreen">a verb</span>.
+        Your task is to <strong><u>write</u> questions and answers</strong> for this verb.
+    <br><br>
+        This task is the same as what you have done in the qualification test.
+
+    <br><br>
+
+<div>
+        <button class="collapsible" type="button">Please CLICK and READ the following instruction carefully.
+            Though the instruction is long, it will only take <strong>less than 2 minutes</strong> to finish one HIT.</button>
+
+    <div class="instruction">
+
+    <br>
+        <strong>Examples</strong>: <br>
+
+    <p class="well">
+    <strong>Sentence:</strong><br>
+    Protesters <span style="font-weight: 700; background-color: lightgreen">blamed</span> the corruption scandal
+    on local officials, who today <span style="font-weight: 700; background-color: lightgreen">refused</span> to
+    <span style="font-weight: 700; background-color: lightgreen">promise</span> that they would
+    <span style="font-weight: 700; background-color: lightgreen">resume</span> the investigation before year's end.
+        <br><br>
+
+        <strong>blamed</strong> <br>
+        1. Who blamed something on someone? Protesters <br>
+        <del><span style="color: red">1. Who blamed the corruption scandal on local officials? Protesters</span></del> <br>
+        <del><span style="color: purple">1. Who blamed? Protesters</span></del> <br>
+        2. Who did someone blame something on? local officials <br>
+        3. What did someone blame someone for? the corruption scandal <br>
+
+        <strong>refused</strong> <br>
+        1. Who refused to do something? local officials <br>
+        <del><span style="color: red">1. Who refused to do promise that they would resume the investigation before year's end? local officials</span></del> <br>
+        2. What did someone refuse to do? promise that they would resume the investigation before year's end <br>
+        3. When did someone refuse to do something? today <br>
+        <del><span style="color: orange">4. Who didn't refuse to do something? Protesters</span></del> <br>
+        <del><span style="color: orange">4. When wouldn't someone resume something? Before year's end</span></del> <br>
+
+        <strong>promise</strong> <br>
+        1. Who didn't promise something? local officials <br>
+        2. What didn't someone promise? they would resume the investigation before year's end <br>
+        <del><span style="color: orange">3. When didn't someone promise to do something? before year's end</span></del> <br>
+
+        <strong>resume</strong> <br>
+        1. Who might resume something? they / local officials<br>
+        <del><span style="color: purple">1. Who might resume something? Protesters</span></del><br>
+        <del><span style="color: red">1. Who might resume the investigation? they / local officials</span></del><br>
+        2. What might someone resume? the investigation <br>
+        3. When might someone resume something? before year's end <br>
+
+
+    </p>
+
+
+
+    Each <strong>question should be formed </strong>  by filling slots like some examples in the table below. One verb can have multiple questions, please write as many as possible, we leave 5 input spaces for filling in at most 5 questions per verb.
+        For any particular verb, if there is more than one possible question that has the same answer, please just write one of them.
+
+
+        <table>
+  <tr>
+    <th>Wh-word</th>
+    <th>Auxiliary</th>
+    <th>Subject</th>
+    <th>Verb</th>
+    <th>Object</th>
+    <th>Preposition</th>
+    <th>Misc</th>
+  </tr>
+  <tr>
+    <td>Who</td>
+    <td></td>
+    <td></td>
+    <td>blamed</td>
+    <td>someone</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>What</td>
+    <td>did</td>
+    <td>someone</td>
+    <td>blame</td>
+    <td>something</td>
+    <td>on</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Who</td>
+    <td></td>
+    <td></td>
+    <td>refused</td>
+    <td></td>
+    <td>to</td>
+    <td>do something</td>
+  </tr>
+  <tr>
+    <td>When</td>
+    <td>did</td>
+    <td>someone</td>
+    <td>refuse</td>
+    <td></td>
+    <td>to</td>
+    <td>do something</td>
+  </tr>
+  </tr>
+    <tr>
+    <td>What</td>
+    <td>didn't</td>
+    <td>someone</td>
+    <td>refuse</td>
+    <td></td>
+    <td>to</td>
+    <td>do</td>
+  </tr>
+  <tr>
+    <td>How</td>
+    <td>can</td>
+    <td>something</td>
+    <td>be tested</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Why</td>
+    <td>was</td>
+    <td>something</td>
+    <td>being used</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Where</td>
+    <td>might</td>
+    <td>someone</td>
+    <td>put</td>
+    <td>something</td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tr>
+    <tr>
+    <td>How long</td>
+    <td>should</td>
+    <td>someone</td>
+    <td>take</td>
+    <td></td>
+    <td>down</td>
+    <td>something</td>
+  </tr>
+</table>
+    <br>
+
+        <strong>It is <span style="color: red">IMPORTANT</span> to note that</strong> questions can not contain any detailed information from the
+        sentence except for the verb (unless it falls into the two exceptions listed below). Please use "something" and "someone" to replace the actual information.
+        See the <del><span style="color: red">red errors</span></del> in the example above.
+        The reason behind this is that we want one question-answer pair only contains one verb plus one argument,
+        so that it can be one atomic unit of the sentence.
+        <br><strong><span style="color: red">Exception 1</span></strong>: It is a phrasal verb, or the word before/after the verb is essential to complete the verb's meaning. For example, "tractors could <span style="font-weight: 700; background-color: lightgreen">get</span> stuck in the mud",
+        you should write "what could something get stuck in? the mud" instead of "what could something get? stuck in the mud".
+        <br><strong><span style="color: red">Exception 2</span></strong>: When the verb is a "Be" verb (is, are, etc.), for example, "this <span style="font-weight: 700; background-color: lightgreen">is</span> an example",
+    then the question-answer pair "what is something? this" is too vague, please instead write "what is an example? this".
+        But when the "Be" verb is followed by a predicative adjective, for example, "he <span style="font-weight: 700; background-color: lightgreen">is</span> out on loan", then it
+    falls back to the regular setting, please write "who is out? he" and "why is someone out? on loan".
+
+    <br><br>
+    Every <strong>answer should be a substring of the sentence</strong> (so you can copy from the sentence).
+    Some questions can have multiple answers, please write as many as possible.
+    We provide 3 input spaces after each question for you to fill in at most 3 valid answers.
+    <br><br>
+
+
+
+    <strong>Important Guidelines</strong>: <br>
+        1. <strong><span style="color: purple">Correctness</span></strong>: Each question-answer pair must satisfy the litmus test that if you substitute the answer back into the question, the result is a grammatical statement, and it is true according to the sentence given.
+    See the <del><span style="color: purple">purple errors</span></del> in the example above. For example, "Who blamed? Protesters" would become Protesters blamed, which is ungrammatical. <br>
+        2. <strong><span style="color: orange">Verb-relevance</span></strong>: The answer to a question must pertain to the participants, time, place, reason, etc., of the target verb in the sentence. For example, if the sentence is "He <span style="font-weight: 700; background-color: lightgreen">promised</span> to come tomorrow,"
+        you should NOT write "When did someone promise to do something? tomorrow", because tomorrow is not the time that he made the promise, but rather the time that he might come.
+        See the <del><span style="color: orange">orange errors</span></del> in the example above.
+<!--    3. <strong>Exhaustiveness</strong>: You must write as many questions, and as many answers to each question, as possible.  For any particular verb, if there is more than one possible question that has the same answer, please just write one of them.-->
+    <br><br>
+    <strong>Please note</strong> that <i>your questions will be judged by other annotators, and you must retain an accuracy of 85% in order to remain qualified</i>. Each verb will require you to write at least one question, and <i>you must write 2 or more questions per verb on average in order to remain qualified</i>.
+    <br><br>
+    <strong>Additional Notes</strong>: <br>
+    1. Occasionally, you may get a bolded word that isn't a verb, or is hard or impossible to write questions about. In this case, please note it in the feedback and do your best to come up with one question, even if it is nonsensical. While it will count against your accuracy, this case is rare enough that it shouldn't matter. <br>
+    2. If the sentence has grammatical errors or is not a complete sentence, please write questions and answers that are appropriate to the sentence's meaning to the best of your ability.
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="row" id="workContent">
+
+<div style="display: none;">
+<p id="example_id">${example_id}</p>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 content"><label class="group-label">Sentence:</label>
+    <p class="well" id="summary">${summary}</p>
+</div>
+
+    <div class="col-xs-12 col-sm-12 content">
+
+        <label class="group-label">${verb}</label>
+        <p class="well">
+            <input name="question1" id="question1" placeholder="question1" size="60" required />
+            <input name="answer11" id="answer11" placeholder="answer1" size="25" required />
+            <input name="answer12" id="answer12" placeholder="answer1" size="25"  />
+            <input name="answer13" id="answer13" placeholder="answer1" size="25"  /> <br><br>
+
+            <input name="question2" id="question2" placeholder="question2" size="60"  />
+            <input name="answer21" id="answer21" placeholder="answer2" size="25"  />
+            <input name="answer22" id="answer22" placeholder="answer2" size="25"  />
+            <input name="answer23" id="answer23" placeholder="answer2" size="25"  /> <br><br>
+
+            <input name="question3" id="question3" placeholder="question3" size="60"  />
+            <input name="answer31" id="answer31" placeholder="answer3" size="25"  />
+            <input name="answer32" id="answer32" placeholder="answer3" size="25"  />
+            <input name="answer33" id="answer33" placeholder="answer3" size="25"  /> <br><br>
+
+            <input name="question4" id="question4" placeholder="question4" size="60"  />
+            <input name="answer41" id="answer41" placeholder="answer4" size="25"  />
+            <input name="answer42" id="answer42" placeholder="answer4" size="25"  />
+            <input name="answer43" id="answer43" placeholder="answer4" size="25"  /> <br><br>
+
+            <input name="question5" id="question5" placeholder="question5" size="60"  />
+            <input name="answer51" id="answer51" placeholder="answer5" size="25"  />
+            <input name="answer52" id="answer52" placeholder="answer5" size="25"  />
+            <input name="answer53" id="answer53" placeholder="answer5" size="25"  /> <br>
+        </p>
+    </div>
+
+<hr>
+    <div class="col-xs-12 col-sm-12 content">
+<p>  Optional Feedback: Thanks for filling out the questions above!  If something about the hit was unclear or you had a problem filling it out, please leave a comment below.</p>
+<textarea rows="2" cols="125" name="commentbox"></textarea>
+        </div>
+
+<div style="text-align:center"><input id="submitButton" type="submit" onclick="return validate()" class="btn btn-default"/></div>
+</div>
+</div>
+
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script><!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" /> -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet" />
+<style type="text/css">#collapseTrigger{ color:#fff; display: block; text-decoration: none; } #submitButton{ white-space: normal; } #instructionBody table{ font-size: 14px; margin-top: 10px; } #instructionBody table caption{ text-align: left; padding: 0 0 5px 0; } #Inputs{ display: block; margin-top: 10px; } .content{ margin-bottom: 15px; } .radio:first-of-type{ margin-top: -5px; }
+</style>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var instruction = this.nextElementSibling;
+    if (instruction.style.maxHeight){
+      instruction.style.maxHeight = null;
+    } else {
+      instruction.style.maxHeight = instruction.scrollHeight + "px";
+    }
+  });
+}
+</script>

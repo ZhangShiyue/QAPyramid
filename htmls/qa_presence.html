@@ -1,0 +1,232 @@
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #DDD;
+  border-top: 1px solid #DDD;
+}
+
+tr:hover {background-color: #D6EEEE;}
+.collapsible {
+  background-color: cadetblue;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+.active, .collapsible:hover {
+  background-color: dodgerblue;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.instruction {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+</style>
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="Sentiment"><!-- Instructions (collapsible) -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary"><!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature --><a class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Instructions</strong><span class="collapse-text">&nbsp;(Please read carefully to ensure that your work gets approved as quickly as possible!)</span></a>
+<div class="panel-body" id="instructionBody">
+<p style="font-size: 14px; text-size-adjust: auto;"><span style="font-weight: 700;">Welcome!</span></p>
+
+<p style="font-size: 14px; text-size-adjust: auto;">We need your help in judging whether some facts are present or not present in a short English paragraph.	</p>
+    <span style="font-size: 18pt">Congrats! You are qualified! Please read through the following instructions as well as <a href="https://docs.google.com/presentation/d/1B3IlSmkO9fC1QMkxZVBWunYMtiLREhalEJVWzAQcgLs/edit?usp=sharing">this slide deck</a> before you accept any task. </span>
+
+    <br><br>
+
+    <button class="collapsible" type="button">Please CLICK and READ the following instruction carefully.
+            After you read the instruction, it will only take <strong>less than 2 minutes</strong> to finish one HIT.</button>
+    <div class="instruction">
+    <br>
+    <p style="font-size: 14px; text-size-adjust: auto;">
+        In this task, you will be given a list of <strong>question-answer pairs</strong> extracted from the <strong>reference text</strong>.
+        Your job is to decide if the <strong>candidate text</strong> contains the information of each question-answer pair.
+        Please answer <span style="color: green">'Present'</span> if the information of the question-answer pair can be
+        inferred from the candidate text. Otherwise, mark <span style="color: red">'Not Present'</span>.
+    </p>
+
+        <strong> <span style="color: red">Importantly,</span> </strong><br>
+
+        1. Question-answer pairs are grouped by <span style="font-weight: 700; background-color: lightgreen">their centric verb</span>.  <br>
+        2. The reference text is provided only as context when the centric verb or the answer is not self-explanatory. For example, in Example 1 below, "He" in
+        the 5th question-answer pair refers to "Juan Arango" in the reference text. However, you should <strong>NOT</strong> replace "something" (or "someone", etc.) in the question
+           with information from the reference text. <br>
+        3. You can first <strong>convert the question-answer pair into an affirmative statement</strong> and check if the meaning
+        of this statement is present in the candidate text or not. For example, the affirmative statement of "What did someone escape from? punishment" is "someone escaped from punishment".<br>
+        4. <span style="color: green">'Present'</span> means that the meaning of the fact (question-answer pair)
+        is <strong>covered</strong> or <strong>implied</strong> by the candidate text, or can be <strong>inferred</strong> from the
+        candidate text, while <strong>the exact format/expression/wording can be different</strong>. In Example 1 below,
+        the 8th question-answer is present in the Candidate Text 1 because "A Arango free kick had brought..." implies Arango scored a kick.
+        <br>
+        5. Please make sure to judge each question-answer pair's presence <strong>individually and independently</strong>. For example, in Example 1 below, the 5th question-answer pair in <span style="color: red">not present</span> in the Candidate Text 2, while the 6th pair is <span style="color: green">present</span>.<br>
+
+        6. Question-answer pairs can have concepts that are <strong>more general</strong> than those in the candidate text. For example, if the fact is "someone is having fun"
+        and the candidate text has "John is having fun", then the fact is <span style="color: green">present</span> in the candidate text, whereas "John is having fun" is <span style="color: red">not present</span> in "someone is having fun".<br>
+        7. A person or an entity can be referred to differently as long as the meaning is clear. For example, in Example 1 below,
+        "The player" in the 8th question-answer pair refers to "Juan Arango", hence, this pair is <span style="color: green">present</span> in the Candidate Text 1.<br>
+        8. Overlook minor errors in grammar, punctuation, spelling, or upper case / lower case that do not affect your understanding. <br>
+        9. In a few rare cases, the question-answer pair itself is wrong and not aligned with the reference text. You do not need to fix the pair,
+        and please still judge whether the meaning of this pair is present in the candidate text.
+
+     <br><br>
+        The following examples will help explain the instructions</span>:
+    <br>
+    <p class="well">
+        <strong><span style="color: green">Example 1</span></strong> <br><br>
+        <strong>Reference Text:</strong> Juan Arango <span style="font-weight: 700; background-color: lightgreen">escaped</span>
+        punishment from the referee for <span style="font-weight: 700; background-color: lightgreen">biting</span> Jesus Zavela .
+        He could <span style="font-weight: 700; background-color: lightgreen">face</span> a retrospective punishment for the incident .
+        The player had earlier <span style="font-weight: 700; background-color: lightgreen">scored</span> a free kick in his team's 4-3 defeat . <br><br>
+
+        <strong>Question-Answer Pairs:</strong> <br>
+        1 Who escaped from something? Juan Arango&nbsp;&nbsp;<br>
+        2 What did someone escape from? punishment&nbsp;<br><br>
+
+        3 Who was biting someone? Juan Arango <br>
+        4 Who was someone biting? Jesus Zavela <br><br>
+
+        5 Who might face something? He <br>
+        6 What might someone face? a retrospective punishment <br>
+        7 Why might someone face something? for the incident <br><br>
+
+        8 Who scored something? The player <br>
+        9 What did someone score?  a free kick <br>
+        10 When did someone score something? earlier <br><br><br>
+
+        <strong>Candidate Text 1:</strong> Club Tijuana lost 4-3 to Monterrey in the Mexican league. Juan Arango was not
+        booked but could face a heavy retrospective ban. A Arango free kick had brought his team level at 2-2. <br><br>
+        1 Who escaped from something? Juan Arango &nbsp;&nbsp;  <span style="color: green">Present</span>, because "not booked" has the same meaning as "escaped". <br>
+        2 What did someone escape from? punishment&nbsp;&nbsp;&nbsp; <span style="color: green">Present</span>, because "punishment" is a more general concept of "ban". <br><br>
+        3 Who was biting someone? Juan Arango &nbsp;&nbsp; <span style="color: red">Not Present</span>, because there is nothing related to "biting" in the candidate text.<br>
+        4 Who was someone biting? Jesus Zavela &nbsp;&nbsp;<span style="color: red">Not Present</span>, because there is nothing related to "biting" in the candidate text.<br><br>
+        5 Who might face something? He &nbsp;&nbsp;<span style="color: green">Present</span>, because "He" is more general than
+           "Juan Arango", and in the reference text "He" refers to "Juan Arango".<br>
+        6 What might someone face? a retrospective punishment &nbsp;&nbsp;<span style="color: green">Present</span>, because "punishment" is a more general concept of "ban".<br>
+        7 Why might someone face something? for the incident &nbsp;&nbsp;<span style="color: red">Not Present</span>, because the candidate text does not mention why Arango could face a ban.<br><br>
+        8 Who scored something? The player &nbsp;&nbsp;<span style="color: green">Present</span>, because "A Arango free kick had brought his team..." indicates that Arango scored a free kick, and "The player" refers to Arango in the reference text<br>
+        9 What did someone score?  a free kick &nbsp;&nbsp;<span style="color: green">Present</span>, because "A Arango free kick had brought his team..." indicates that Arango scored a free kick.<br>
+        10 When did someone score something? earlier &nbsp;&nbsp;<span style="color: red">Not Present</span>, because there is no information about "earlier" in the candidate text. <br><br><br>
+
+        <strong>Candidate Text 2:</strong> Jesus Zavela could face a heavy retrospective ban. <br><br>
+       5 Who might face something? He &nbsp;&nbsp; <span style="color: red">Not Present</span>, because even if "He" is more general than
+           "Jesus Zavela", in the reference text "He" refers to "Juan Arango" instead of "Jesus Zavela".<br>
+       6 What might someone face? a retrospective punishment &nbsp;&nbsp;<span style="color: green">Present</span>, because "punishment" is a more general concept of "ban".<br>
+
+   </p>
+
+
+
+    </div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="row" id="workContent">
+
+<div style="display: none;">
+<p id="example_id">${example_id}</p>
+<p id="system">${system}</p>
+</div>
+
+<div class="col-xs-12 col-sm-12 content"><label class="group-label">Reference Text:</label>
+    <p class="well">${reference}<br></p>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 content">
+    <label class="group-label">Question-Answer Pairs:</label>
+<p class="well">
+    <script type = "text/javascript">
+        var i;
+        var qas = ["${qa1}", "${qa2}", "${qa3}", "${qa4}", "${qa5}", "${qa6}",
+            "${qa7}", "${qa8}", "${qa9}", "${qa10}"];
+
+        for (i = 1; i <= parseInt(${numqa}); i++)
+        {
+            document.write(i + '&nbsp;' + qas[i - 1] + '<br>');
+        }
+
+    </script>
+</p>
+    <label class="group-label">Candidate Text:</label>
+<p class="well">
+    ${summary}<br><br>
+    <script type = "text/javascript">
+        var i;
+        var qas = ["${qa1}", "${qa2}", "${qa3}", "${qa4}", "${qa5}", "${qa6}",
+            "${qa7}", "${qa8}", "${qa9}", "${qa10}"];
+
+        for (i = 1; i <= parseInt(${numqa}); i++)
+        {
+            document.write(i + '&nbsp;' + qas[i - 1] + '&nbsp;&nbsp;&nbsp;&nbsp;' +
+                '<input type="radio" name="rate' + i + '" id="rate' + i + '1" value="1" required=""> ' +
+                '<label for="rate' + i + '1">Present</label> ' +
+                '<input type="radio" name="rate' + i + '" id="rate' + i + '2" value="2" required=""> ' +
+                '<label for="rate' + i + '2">Not Present</label>' + '<br>');
+        }
+
+    </script>
+</p>
+<hr>
+<p>  Optional Feedback: Thanks for filling out the questions above!  If something about the hit was unclear or you had a problem filling it out, please leave a comment below.</p>
+<textarea rows="2" cols="125" name="commentbox"></textarea>
+</div>
+
+
+<div style="text-align:center"><input id="submitButton" type="submit" onclick="return validate()" class="btn btn-default"/></div>
+
+
+</div>
+
+
+</div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script><!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" /> -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet" />
+<style type="text/css">#collapseTrigger{ color:#fff; display: block; text-decoration: none; } #submitButton{ white-space: normal; } #instructionBody table{ font-size: 14px; margin-top: 10px; } #instructionBody table caption{ text-align: left; padding: 0 0 5px 0; } #Inputs{ display: block; margin-top: 10px; } .content{ margin-bottom: 15px; } .radio:first-of-type{ margin-top: -5px; }
+</style>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var instruction = this.nextElementSibling;
+    if (instruction.style.maxHeight){
+      instruction.style.maxHeight = null;
+    } else {
+      instruction.style.maxHeight = instruction.scrollHeight + "px";
+    }
+  });
+}
+</script>
